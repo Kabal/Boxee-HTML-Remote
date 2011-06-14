@@ -95,6 +95,16 @@ input#keyboard {
 	position:absolute
 }
 
+
+#controls-wrapper {
+	position: relative;
+	margin-left:auto;
+	margin-right:auto;
+	width:600px;
+
+}
+
+
 #down-arrow
 {
 	-moz-transform:rotate(-180deg);
@@ -124,7 +134,7 @@ input#keyboard {
 #volume-control {
 	position: absolute;
 	height: 350px;
-	right: 330px;
+	right: 0;
 	top: 112px;
 	width:25px;
 }
@@ -168,6 +178,7 @@ input#keyboard {
 </style>
 </head>
 <body>
+<div id="controls-wrapper">
 <div id="volume-control"></div>
 <div id="controls">
 <div class="boxeecmd" id="up" rel="sendkey(270)"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAAXNSR0IArs4c6QAAAARnQU1BAACx
@@ -827,7 +838,7 @@ AAAAAElFTkSuQmCC" /></div>
 <form>
 <input id="keyboard" size="25" />
 </form>
-
+</div>
 
 </div>
 <script type="text/javascript">
