@@ -2,5 +2,7 @@ A simple, single-file HTML/jQuery remote control for Boxee.
 
 Should work in Chrome & Firefox. Probably not IE.
 
+You can run it from your desktop - it doesn't need to be on a web-server.
+
 Original Post:
 http://pseudoperfect.com/boxee-html-remote
