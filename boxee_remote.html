@@ -9,7 +9,7 @@
 var ip = '192.168.1.11';
 
 //set this to your boxee remote port - usually 8800
-var port = '8800'
+var port = '8800';
 
 </script>
 <style type="text/css">
@@ -135,7 +135,7 @@ input#keyboard {
 	position: absolute;
 	height: 350px;
 	right: 0;
-	top: 112px;
+	top: 100px;
 	width:25px;
 }
 
@@ -834,10 +834,10 @@ AAAAAElFTkSuQmCC" /></div>
 </div>
 
 <div id="keyboard-input">
-<div>Select for Keyboard Input</div>
 <form>
 <input id="keyboard" size="25" />
 </form>
+<div><strong>Keyboard Input</strong></div>
 </div>
 
 </div>
@@ -974,51 +974,51 @@ $(document).ready(function() {
   
   //special global handling for dir keys, enter key, escape key
   $(document).keyup(function(event) {
-      var boxeeKeyCode = 0;
+    var boxeeKeyCode = 0;
     if (event.keyCode == 13) { //enter key sends command
-	  boxeeKeyCode = 256;
-	}
-	if (event.keyCode == 38) { //arrow keys
-	  boxeeKeyCode = 270;
-	}
-	if (event.keyCode == 40) { //arrow keys
-	  boxeeKeyCode = 271;
-	}
-	if (event.keyCode == 37) { //arrow keys
-	  boxeeKeyCode = 272;
-	}
-	if (event.keyCode == 39) { //arrow keys
-	  boxeeKeyCode = 273;
-	}
-	if (event.keyCode == 27) { //escape key sends back
-	  boxeeKeyCode = 275;
-	}
-	if (boxeeKeyCode !== 0) {
-	   $.ajax({
-         url: commandBaseUrl + 'SendKey(' + boxeeKeyCode + ')',
-       });
-	}
+      boxeeKeyCode = 256;
+    }
+    if (event.keyCode == 38) { //arrow keys
+      boxeeKeyCode = 270;
+    }
+    if (event.keyCode == 40) { //arrow keys
+      boxeeKeyCode = 271;
+    }
+    if (event.keyCode == 37) { //arrow keys
+      boxeeKeyCode = 272;
+    }
+    if (event.keyCode == 39) { //arrow keys
+      boxeeKeyCode = 273;
+    }
+    if (event.keyCode == 27) { //escape key sends back
+      boxeeKeyCode = 275;
+    }
+    if (boxeeKeyCode !== 0) {
+    $.ajax({
+      url: commandBaseUrl + 'SendKey(' + boxeeKeyCode + ')',
+    });
+    }
   });
   
   //special handling for backspace key when within input#keyboard for chrome
   if (navigator.userAgent.toLowerCase().indexOf('chrome') > -1) {
     $('input#keyboard').keyup(function(event) {
       if (event.which == 8) {
-	    boxeeKeyCode = parseInt(event.which) + 61696;
-	    $.ajax({
+        boxeeKeyCode = parseInt(event.which) + 61696;
+	$.ajax({
           url: commandBaseUrl + 'SendKey(' + boxeeKeyCode + ')',
         });
-	  }
+      }
     });
   }
   
   //normal handling for keys within input#keyboard
   $('input#keyboard').keypress(function(event) {
     boxeeKeyCode = parseInt(event.which) + 61696;
-	 $.ajax({
+    $.ajax({
       url: commandBaseUrl + 'SendKey(' + boxeeKeyCode + ')',
     });
-	$('input#keyboard').val('');
+    $('input#keyboard').val('');
   });
   
   $('#volume-control').slider({
@@ -1030,9 +1030,7 @@ $(document).ready(function() {
     change: function( event, ui ) {
       $.ajax({url:commandBaseUrl + 'setvolume(' + ui.value + ')',});
     }
-  });;
-  
-  
+  });
 });
 </script>
 </body>
